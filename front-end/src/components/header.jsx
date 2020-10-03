@@ -2,16 +2,16 @@ import React from 'react'
 
 export default () => (
     <div id="NavBar">
-        <div class="NavItem">
+        <div className="NavItem">
             TASKS¡
         </div>
-        <div class="NavItem">
+        <div className="NavItem">
             Início
         </div>
-        <div class="NavItem">
+        <div className="NavItem">
             Tarefas
         </div>
-        <div class="NavItem">
+        <div className="NavItem">
             Relatórios
         </div>
     </div>

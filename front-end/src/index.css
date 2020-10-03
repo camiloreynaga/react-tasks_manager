@@ -1,7 +1,13 @@
 body{
-    padding: 0x;
+    padding: 0px;
     margin: 0px;
     background-color: #d8d8d8;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#root{
+    width:100%;
+    height:100%;
 }
 
 #NavBar{
@@ -25,7 +31,6 @@ body{
     align-items: center;
     padding: 0px 5px;
     cursor:pointer;
-    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 20px;
 }
@@ -33,4 +38,45 @@ body{
 #NavBar > .NavItem:hover:nth-last-child(-n+3){
     background-color: #01a332;
     color: #FFF;
+}
+
+#tasks-container{
+    display:inline-flex;
+    width:100%;
+    min-height: calc(100% - 50px);
+}
+
+#tasks-list{
+    background-color:white;
+    border-right:solid 3px #ebebeb;
+    width:300px;
+}
+.task-item{
+    border-bottom:solid 1px #ebebeb;
+    border-left:solid 8px #00c93c;
+}
+
+.task-item:hover, .task-item:hover .task-itemDesc{
+    cursor:pointer;
+    background-color: #00c93c;
+    color:white;
+}
+
+.task-itemTitle{
+    font-size:19px;
+    font-weight: 400;
+    padding-left:2px;
+}
+
+.task-itemDesc{
+    color:#a3a3a3;
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    margin: 0 auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left:4px;
 }
