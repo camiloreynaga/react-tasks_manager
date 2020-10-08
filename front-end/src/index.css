@@ -1,7 +1,10 @@
 :root{
-    --main-color: #00c93c;
+    --main-color: #2fc25b;
     --navbar-height: 50px;
     --taskList-width:300px;
+    --urgencyN-color:#2fc25b;
+    --urgencyU-color:#fcdb23;
+    --urgencyVU-color:#f00000;
 }
 
 body{
@@ -43,8 +46,8 @@ body{
     font-size: 20px;
 }
 
-#NavBar > .NavItem:hover:nth-last-child(-n+3){
-    background-color: #01a332;
+#NavBar > .NavItem:hover:nth-last-child(-n+2){
+    background-color: #26a04a;
     color: #FFF;
 }
 
@@ -70,20 +73,32 @@ body{
 }
 
 .item-normal{
-    border-left:solid 8px #00c93c;
+    border-left:solid 8px var(--urgencyN-color);
 }
 
 .item-urgent{
-    border-left:solid 8px #fcdb23;
+    border-left:solid 8px var(--urgencyU-color);
 }
 
 .item-veryUrgent{
-    border-left:solid 8px #f00000;
+    border-left:solid 8px var(--urgencyVU-color)
 }
 
-.task-item:hover, .task-item:hover .task-itemDesc{
+.task-item.item-normal:hover , .task-item.item-normal:hover .task-itemDesc{
     cursor:pointer;
-    background-color: var(--main-color);
+    background-color: var(--urgencyN-color);
+    color:white;
+}
+
+.task-item.item-urgent:hover , .task-item.item-urgent:hover .task-itemDesc{
+    cursor:pointer;
+    background-color: var(--urgencyU-color);
+    color:white;
+}
+
+.task-item.item-veryUrgent:hover , .task-item.item-veryUrgent:hover .task-itemDesc{
+    cursor:pointer;
+    background-color: var(--urgencyVU-color);
     color:white;
 }
 
@@ -132,7 +147,6 @@ body{
 }
 
 #task-show input[type="text"]:focus{
-    /* background-color: #f0f0f0; */
     outline: solid 1px #d8d8d8;
 }
 #task-showDescription{

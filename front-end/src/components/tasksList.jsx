@@ -1,32 +1,48 @@
-import React from 'react'
+import React, {Component} from 'react'
+import axios from 'axios'
 
-export default () => (
+export default class Lista extends Component {
+
+    constructor(props){
+        super(props)
+        this.getListItems = this.getListItems.bind(this)
+        this.mountListItems = this.mountListItems.bind(this)
+        this.state = {list: this.getListItems()}
+    }
+
+    getListItems(){
+        const URL = 'http://192.168.25.61:3003/task'
+        axios.get(URL)
+            .then(resp => {
+                this.setState({list: resp.data})
+            })
+    }
+
+    mountListItems(){
+        const list = this.state.list || []
+        const items = list.map(element => {
+            const urgencyStyles = ['item-normal', 'item-urgent', 'item-veryUrgent']
+            return (
+            <div key={element.id_task} 
+                    className={`task-item ${urgencyStyles[element.urgency]}`}>
+                <div className="task-itemTitle">
+                {`#${element.id_task}`} - {element.title}
+                </div>
+                <div className="task-itemDesc">
+                    {element.description}
+                </div>
+                <div className="task-itemDesc">
+                    Prazo: {element.due_date.slice(0, 10).replace(/-/g,'/')}
+                </div>
+            </div>
+        )})
+
+        return items
+    }
+
+    render(){
+    return(
     <div id="tasks-list">
-        <div className="task-item item-normal">
-            <div className="task-itemTitle">
-                [OC=1028] Tarefa 1
-            </div>
-            <div className="task-itemDesc">
-                Criar novo componente para aumento de colaboradores que entrarão na companhia para sanar as demandas
-                advindas do aumento de casos do corona.
-            </div>
-        </div>
-        <div className="task-item item-urgent">
-            <div className="task-itemTitle">
-                [OC=4875] Tarefa 2
-            </div>
-            <div className="task-itemDesc">
-                Realizar o levantamento do escopo do novo projeto que deverá ser
-                implementado na plataforma.
-            </div>
-        </div>
-        <div className="task-item item-veryUrgent">
-            <div className="task-itemTitle">
-                [OC=3825] Tarefa 3
-            </div>
-            <div className="task-itemDesc">
-                Apagar a conta do fulano e do beltrano.
-            </div>
-        </div>
-    </div>
-)
+        {this.mountListItems()}    
+    </div>)}
+}

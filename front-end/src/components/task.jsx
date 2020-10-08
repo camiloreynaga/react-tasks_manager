@@ -8,7 +8,7 @@ export default () => (
         </div>
         <div id="task-showDescription">
             <span><b>Descrição:</b></span>
-            <span className="task-description" role="textbox" contenteditable="">
+            <span className="task-description" role="textbox" contentEditable="">
                 Criar novo componente para aumento de colaboradores que entrarão na 
                 companhia para sanar as demandas advindas do aumento de casos do corona.
             </span>
