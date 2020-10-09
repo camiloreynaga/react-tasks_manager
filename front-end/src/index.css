@@ -67,6 +67,7 @@ body{
     background-color:white;
     border-right:solid 3px #ebebeb;
     width:var(--taskList-width);
+    overflow-y: scroll;
 }
 .task-item{
     border-bottom:solid 1px #ebebeb;    
