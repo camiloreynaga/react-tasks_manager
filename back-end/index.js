@@ -28,7 +28,9 @@ server.route('/task')
         console.log(req.body.K1)
     })
     .put((req, resp)=>{
-        resp.send('Changing books')
+        bd.query(`UPDATE tasks SET title = '${req.body.title}', description = '${req.body.description}' WHERE id_task = ${req.body.id}`)
+        resp.send(`Changing books: ${req.body.id}`)
+        console.log(`Changing books: ${req.body.id}`)
     })
 
 server.listen(port, () => {

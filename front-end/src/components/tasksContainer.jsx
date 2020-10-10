@@ -9,6 +9,7 @@ export default class TaskContainer extends Component{
     constructor(props){
         super(props)
         this.getListItems = this.getListItems.bind(this)
+        this.changeTask = this.changeTask.bind(this)
         this.onClickFunction = this.onClickFunction.bind(this)
         this.state = {list: this.getListItems(), actualTask: {}}
     }
@@ -21,10 +22,17 @@ export default class TaskContainer extends Component{
             })
     }
 
+    changeTask(id, title, description){
+        const URL = 'http://192.168.25.61:3003/task'
+        axios.put(URL, {id, title, description})
+            .then(resp => {
+                this.forceUpdate()
+            })
+    }
+
     onClickFunction(idTask){
         const actualTask = this.state.list.find((element) => {
-            if(element.id_task === idTask)
-                return element
+            return element.id_task === idTask ? element : null
         })
         
         this.setState({actualTask})
@@ -35,7 +43,8 @@ export default class TaskContainer extends Component{
         <div id="tasks-container">
             <TasksList listItems={this.state.list}
                 onClickFunction={this.onClickFunction}/>
-            <Task actualTask={this.state.actualTask}/>
+            <Task actualTask={this.state.actualTask}
+            changeTitleFunction={this.changeTask}/>
             <TaskFunctions/>
         </div>
     )}
