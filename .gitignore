@@ -1,9 +1,8 @@
-##Front-end##
-
 # dependencies
 node_modules/
 front-end/.pnp
 front-end/.pnp.js
+yarn.lock
 
 # testing
 front-end/coverage
