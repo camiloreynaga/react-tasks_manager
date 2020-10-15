@@ -23,15 +23,14 @@ DROP TABLE IF EXISTS `tasks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tasks` (
-  `id_task` int(11) NOT NULL AUTO_INCREMENT,
+  `id_task` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `urgency` int(11) NOT NULL DEFAULT 0,
   `done_at` date DEFAULT NULL,
   `due_date` date NOT NULL,
-  `created_at` date NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id_task`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

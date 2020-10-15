@@ -1,13 +1,13 @@
 import React from 'react';
+import { HashRouter, Route } from "react-router-dom";
 
 import Header from './components/header'
 import TaskContainer from './components/tasksContainer'
-
 import './index.css'
 
 export default () => (
-    <React.Fragment>
+    <HashRouter>
         <Header/>
-        <TaskContainer/>
-    </React.Fragment>
+        <Route path="/tarefas" component={TaskContainer} />
+    </HashRouter>
 )

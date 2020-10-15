@@ -45,7 +45,8 @@ export default class TaskContainer extends Component{
                 onClickFunction={this.onClickFunction}/>
             <Task actualTask={this.state.actualTask}
             changeTitleFunction={this.changeTask}/>
-            <TaskFunctions/>
+            <TaskFunctions updateContainer={this.getListItems}
+            actualTask={this.state.actualTask}/>
         </div>
     )}
 }

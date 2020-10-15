@@ -4,8 +4,7 @@ import '../index.css'
 export default props => {
     const actualTask = props.actualTask
 
-    const [actualTitle, setTitle] = useState('')
-    let actualDescription = ''
+    const [actualTitle, setTitle] = useState('')    
 
     const onChangeTitle = event => {
         setTitle(event.target.value)
@@ -14,8 +13,7 @@ export default props => {
     }
 
     const onChangeDescription = event => {
-        actualTask.description = event.target.value
-        console.log(event)
+        actualTask.description = event.target.value        
         props.changeTitleFunction(actualTask.id_task, actualTask.title, actualTask.description)
     }
       

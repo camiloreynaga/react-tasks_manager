@@ -12,25 +12,24 @@ server.use(bodyParser.urlencoded({
 
 const bd = mysql.createConnection({
     hosr: 'localhost',
-    user: 'task',
+    user: 'tasks',
     password: '',
     database: 'task_manager'
 })
 
 server.route('/task')
     .get((req, resp)=>{
-        bd.query('SELECT * FROM tasks', (err, result) => {
+        bd.query('SELECT * FROM tasks ORDER BY id_task DESC', (err, result) => {
             resp.send(result)
         })
     })
     .post((req, resp)=>{
-        resp.send(req.body)
-        console.log(req.body.K1)
+        bd.query(`INSERT INTO tasks (title, description, urgency, due_date) values ('${req.body.title}', '${req.body.description}', ${req.body.urgency}, '${req.body.due_date}')`)
+        resp.send('Inserção realizada')
     })
     .put((req, resp)=>{
-        bd.query(`UPDATE tasks SET title = '${req.body.title}', description = '${req.body.description}' WHERE id_task = ${req.body.id}`)
-        resp.send(`Changing books: ${req.body.id}`)
-        console.log(`Changing books: ${req.body.id}`)
+        bd.query(`UPDATE tasks SET title = '${req.body.title}', description = \'${req.body.description}\' WHERE id_task = ${req.body.id}`)
+        resp.send('Alteração realizada')
     })
 
 server.listen(port, () => {

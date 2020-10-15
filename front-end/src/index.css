@@ -13,6 +13,7 @@ body{
     background-color: #d8d8d8;
     font-family: 'Open Sans', sans-serif;
     outline: none;
+    overflow: hidden;
 }
 
 #root{
@@ -44,9 +45,10 @@ body{
     cursor:pointer;
     font-weight: 400;
     font-size: 20px;
+    text-decoration: none;
 }
 
-#NavBar > .NavItem:hover:nth-last-child(-n+2){
+#NavBar > .NavItem:hover:nth-last-child(-n+3){
     background-color: #26a04a;
     color: #FFF;
 }
@@ -211,4 +213,81 @@ body{
 .task-function:hover{
     cursor:pointer;
     background-color: #f7f7f7;
+}
+
+#newTaskModal{
+    position: absolute;
+    padding: 50px 0px;
+    right: 10px;
+    /* height: 100%; */
+    width:400px;
+    background-color: white;
+    border:solid 1px rgb(199, 199, 199);
+    display:inline-flex;    
+    flex-flow: column;
+    align-items: center;
+}
+
+.opened{
+    animation-name: OpenNewTaskModal;
+    animation-duration: 0.5s;
+}
+
+.closed{
+    animation-name: OpenNewTaskModal;
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+}
+
+@keyframes OpenNewTaskModal {
+    from{right: -400px;};
+}
+
+
+#newTaskModal>.newTaskTitle{
+    font-size: 35px;
+    margin-bottom:500px;
+}
+
+#newTaskModal>.field{
+    margin-top: 15px;
+    margin-left:10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width:90%;
+}
+
+#newTaskModal input[type='text'], #newTaskModal select, #newTaskModal textarea{
+    border:0px;
+    background-color: #ebebeb;    
+    height: 35px;
+    width:70%;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-left:5px;
+    padding-left: 5px;
+    outline: none;
+}
+
+#newTaskModal>.field>select{
+    font-size: 17px;    
+}
+
+#newTaskModal textarea{
+    height: 150px;
+    resize: none;
+}
+
+#newTaskModal>button{
+    margin-top:20px;
+    padding: 10px 15px;
+    border:0px;
+    color:white;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    cursor: pointer;
+    outline: none;
 }

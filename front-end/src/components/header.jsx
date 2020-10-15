@@ -1,18 +1,22 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export default () => (
     <React.Fragment>
-        <div id="NavBar">
-            <div className="NavItem">
+        <div id='NavBar'>
+            <div className='NavItem'>
                 TASKS¡
             </div>
-            <div className="NavItem">
+            <Link className='NavItem' to='tarefas' replace>
                 Tarefas
-            </div>
-            <div className="NavItem">
+            </Link>
+            <Link className='NavItem' to='relatorios' replace>
                 Relatórios
-            </div>
+            </Link>
+            <Link className='NavItem' to='sobre' replace>
+                Sobre
+            </Link>
         </div>
-        <div id="navSpacer"></div>
+        <div id='navSpacer'></div>
     </React.Fragment>
 )
