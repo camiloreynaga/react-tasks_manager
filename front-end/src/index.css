@@ -129,9 +129,10 @@ body{
 }
 
 #task-show{
-    flex:1;
+    flex:1;    
     padding:0px 0px;
     background-color:#ffffff;
+    padding-bottom:20px;
 }
 
 #task-showTitle{
@@ -160,9 +161,17 @@ body{
     width:75%;
     margin-top:20px;
     margin-left:10px;
-    height: 250px;
+    height: 280px;
     display:inline-flex;
     flex-flow: column;
+}
+
+#task-showDescription>span[data='date']{
+    margin:5px 0px;
+    border-radius: 5px;
+    border: solid 1px rgb(192, 192, 192);
+    width: 250px;
+    text-align: center;
 }
 
 .task-description{
@@ -171,6 +180,8 @@ body{
     padding: 5px 5px 15px 5px;
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
+    height: 300px;
+    resize: none;
 }
 
 
@@ -233,20 +244,21 @@ body{
     animation-duration: 0.5s;
 }
 
-.closed{
-    animation-name: OpenNewTaskModal;
-    animation-duration: 0.5s;
-    animation-direction: reverse;
-    animation-fill-mode: forwards;
-}
-
 @keyframes OpenNewTaskModal {
     from{right: -400px;};
 }
 
+#newTaskModal>.closeNewTask{
+    position: absolute;
+    top:5px;
+    right:5px;
+    cursor: pointer;
+}
 
 #newTaskModal>.newTaskTitle{
-    font-size: 35px;
+    position: absolute;
+    top: 15px;
+    font-size: 21px;
     margin-bottom:500px;
 }
 

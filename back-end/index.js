@@ -28,6 +28,11 @@ server.route('/task')
         resp.send('Inserção realizada')
     })
     .put((req, resp)=>{
+        if(req.body.id === undefined){
+            resp.send('Informar Id da tarefa')
+            console.log('err')
+            return  
+        }
         bd.query(`UPDATE tasks SET title = '${req.body.title}', description = \'${req.body.description}\' WHERE id_task = ${req.body.id}`)
         resp.send('Alteração realizada')
     })

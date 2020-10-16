@@ -1,13 +1,18 @@
 import React, {useState} from 'react'
-import Axios from 'axios'
 
 import NewTask from './newTask'
 
 export default props => {
     const [actualFunction, setFunction] = useState('')
 
+    const childProps = {...props}
+
+    childProps.closeNewTaskModal = () => {
+        setFunction('')
+    }
+
     const OpenAddTaskModal = () => {
-        setFunction(NewTask(props))
+        setFunction(NewTask(childProps))
     }
 
     const DeleteTask = () => {
