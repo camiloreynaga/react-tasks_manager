@@ -15,7 +15,7 @@ export default class TaskContainer extends Component{
     }
 
     getListItems(){
-        const URL = 'http://192.168.25.61:3003/task'
+        const URL = 'http://localhost:3003/task'
         axios.get(URL)
             .then(resp => {
                 this.setState({list: resp.data})
@@ -23,7 +23,7 @@ export default class TaskContainer extends Component{
     }
 
     changeTask(id, title, description){
-        const URL = 'http://192.168.25.61:3003/task'
+        const URL = 'http://localhost:3003/task'
         axios.put(URL, {id, title, description})
             .then(resp => {
                 this.forceUpdate()

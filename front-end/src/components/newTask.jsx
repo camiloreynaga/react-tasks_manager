@@ -19,7 +19,7 @@ export default props => {
         document.getElementById('newTaskDueDate').value = null
         document.getElementById('newTaskUrgency').value = null
 
-        const URL = 'http://192.168.25.61:3003/task'
+        const URL = 'http://localhost:3003/task'
         Axios.post(URL, {title, description, due_date, urgency})
             .then(resp => {        
                 props.updateContainer()
