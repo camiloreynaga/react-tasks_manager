@@ -17,7 +17,7 @@ export default props => {
     }
 
     const DeleteTask = () => {
-        const URL = 'http://localhost:3003/task'
+        const URL = 'https://tasksbkend.herokuapp.com/task'
         //Had to use fetch due some issues setting headers with axios
         const payload = JSON.stringify({id_task: props.actualTask.id_task})
         let response = fetch(URL, {

@@ -19,7 +19,7 @@ export default props => {
         document.getElementById('newTaskDueDate').value = null
         document.getElementById('newTaskUrgency').value = null
 
-        const URL = 'http://localhost:3003/task'
+        const URL = 'https://tasksbkend.herokuapp.com/task'
         Axios.post(URL, {title, description, due_date, urgency})
             .then(resp => {        
                 props.updateContainer()
@@ -47,7 +47,7 @@ export default props => {
             </div>
             <div className='field'>
                 <label><b>Prazo:</b></label>
-                <input type='text' name='newTaskDueDate' id='newTaskDueDate'/>
+                <input type='text' placeholder='2020-01-01' name='newTaskDueDate' id='newTaskDueDate'/>
             </div>
             <div className='field'>
                 <label><b>Urgência:</b></label>

@@ -2,7 +2,7 @@ const mysql = require('mysql')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const server = require('express')()
-const port = 3003
+const port = process.env.PORT || 3003
 
 server.use(cors())
 server.use(bodyParser.json())
@@ -11,12 +11,16 @@ server.use(bodyParser.urlencoded({
 }))
 
 const bd = mysql.createConnection({
-    host: 'localhost',
-    user: 'task',
-    password: '',
-    database: 'task_manager'
+    host: 'den1.mysql5.gear.host',
+    user: 'mydb63',
+    password: 'Em6W1_P9a0?P',
+    database: 'mydb63'
 })
 
+bd.query('SELECT * FROM tasks ORDER BY id_task DESC', (err, result) => {
+    console.log(err)
+    console.log(result)
+})
 
 server.route('/task')
     .get((req, resp)=>{
@@ -25,10 +29,14 @@ server.route('/task')
         })
     })
     .post((req, resp)=>{
+        req.body.title = req.body.title.replace(/'/g, "").replace(/"/g,'')
+        req.body.description = req.body.description.replace(/'/g, "").replace(/"/g,'')
         bd.query(`INSERT INTO tasks (title, description, urgency, due_date) values ('${req.body.title}', '${req.body.description}', ${req.body.urgency}, '${req.body.due_date}')`)
         resp.send('Inserção realizada')
     })
     .put((req, resp)=>{
+        req.body.title = req.body.title.replace(/'/g, "").replace(/"/g,'')
+        req.body.description = req.body.description.replace(/'/g, "").replace(/"/g,'')
         if(req.body.id === undefined){
             resp.send('Informar id da tarefa')
             console.log('err')

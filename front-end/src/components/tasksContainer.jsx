@@ -15,7 +15,7 @@ export default class TaskContainer extends Component{
     }
 
     getListItems(){
-        const URL = 'http://localhost:3003/task'
+        const URL = 'https://tasksbkend.herokuapp.com/task'
         axios.get(URL)
             .then(resp => {
                 this.setState({list: resp.data})
@@ -23,7 +23,7 @@ export default class TaskContainer extends Component{
     }
 
     changeTask(id, title, description){
-        const URL = 'http://localhost:3003/task'
+        const URL = 'https://tasksbkend.herokuapp.com/task'
         axios.put(URL, {id, title, description})
             .then(resp => {
                 this.forceUpdate()
